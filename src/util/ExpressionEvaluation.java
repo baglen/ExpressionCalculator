@@ -18,7 +18,7 @@ public class ExpressionEvaluation {
                 values.push(Double.parseDouble(String.valueOf(input.charAt(i))));
             }
             else if(input.charAt(i) == ')'){
-                while (!operators.isEmpty() && !operators.peek().equals("(")){
+                if (!operators.isEmpty() && !operators.peek().equals("(")){
                     getTopValues(values, operators);
                 }
                 if(!operators.isEmpty()){
