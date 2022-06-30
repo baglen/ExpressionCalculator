@@ -14,14 +14,8 @@ public class ExpressionEvaluation {
             if (input.charAt(i) == '(') {
                 operators.push("(");
             }
-            else if (i < input.length() && Character.isDigit(input.charAt(i))) {
-                double value = 0;
-                while (i < input.length() && Character.isDigit(input.charAt(i))){
-                    value = (value * 10) + Integer.parseInt(String.valueOf(input.charAt(i)));
-                    i++;
-                }
-                values.push(value);
-                i--;
+            else if (Character.isDigit(input.charAt(i))) {
+                values.push(Double.parseDouble(String.valueOf(input.charAt(i))));
             }
             else if(input.charAt(i) == ')'){
                 while (!operators.isEmpty() && !operators.peek().equals("(")){
@@ -32,7 +26,7 @@ public class ExpressionEvaluation {
                 }
             }
             else {
-                while (!operators.isEmpty() && getPrecedence(operators.peek()) >= getPrecedence(input.charAt(i) +"")){
+                if (!operators.isEmpty() && getPrecedence(operators.peek()) >= getPrecedence(input.charAt(i) +"")){
                     getTopValues(values, operators);
                 }
                 operators.push(String.valueOf(input.charAt(i)));
