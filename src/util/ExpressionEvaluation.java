@@ -11,10 +11,7 @@ public class ExpressionEvaluation {
         Stack<Double> values = new Stack<>();
         Stack<String> operators = new Stack<>();
         for (int i = 0; i < input.length(); i++) {
-            if(input.charAt(i) == ' ') {
-                continue;
-            }
-            else if (input.charAt(i) == '(') {
+            if (input.charAt(i) == '(') {
                 operators.push("(");
             }
             else if (i < input.length() && Character.isDigit(input.charAt(i))) {
